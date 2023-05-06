@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <title>Assistente alla scrittura</title>
+</head>
+<body>
+    <h1>Assistente alla scrittura</h1>
+    <hr>
+
+    {# Area principale di output #}
+    <div>
+        <table width="100%">
+            <tr>
+                <th>
+                    Testo originale
+                </th>
+                <th>
+                    Vocabolario
+                </th>
+            </tr>
+            <tr style="vertical-align: top;">
+                <td id="displayed_text" style="border-right: 1px solid #DFDFDF;">
+                    {{ displayed_text }}
+                </td>
+                <td>
+                    <table width="0%" style="padding: 4px 7px 2px; white-space:nowrap;">
+                        {% for item in text_dictionary %}
+                        <tr onmouseenter="highlightText( `{{ item['key'] }}` );" onmouseleave="highlightTextReset();" ontouchstart="highlightTextReset(); highlightText( `{{ item['key'] }}` );">
+                            <td>
+                                {{ item["key"] }}
+                            </td>
+                            <td>
+                                {{ item["count"] }}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </div>
+    
+    <script src="/static/js/highlight_text.js"></script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <title>Assistente alla scrittura</title>
+</head>
+<body>
+    <h1>Assistente alla scrittura</h1>
+    <hr>
+
+    {# Area principale di input #}
+    <div>
+        <form id="textForm" action="/analyzeText" method="post">
+            <textarea id="textInput" name="textInput" rows="20" cols="100" form="textForm" placeholder="Inserisci il testo da analizzare qui..."></textarea>
+            <br>
+            <input type="submit" value="Analizza" id=""/>
+        </form>
+    </div>
+
+    <hr>
+    {# Area principale di output #}
+    
+    {{ a_variable }}
+
+    
+</body>
+</html>
