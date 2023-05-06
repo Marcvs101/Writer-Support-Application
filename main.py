@@ -1,6 +1,8 @@
 import os
 import re
 import json
+import hashlib
+import datetime
 
 from flask import Flask
 from flask import escape
@@ -63,5 +65,13 @@ def post_analyze_text():
         if (text_statistics[word]>1):
             text_dictionary.append({"key":word, "count":str(text_statistics[word])})
     text_dictionary.sort(key=lambda i: i["count"], reverse=True)
+
+    f=open(file="logs/"+str(hashlib.md5(text_input.encode('utf-8')).hexdigest())+".txt",mode="w",encoding="utf-8")
+    f.write(str(request.remote_addr))
+    f.write("\n")
+    f.write(str(datetime.datetime.now()))
+    f.write("\n----\n")
+    f.write(str(text_input.replace("\r","\n").replace("\n\n","\n")))
+    f.close()
 
     return render_template("analyze_text.html.jinja", displayed_text=text_output, text_dictionary=text_dictionary)

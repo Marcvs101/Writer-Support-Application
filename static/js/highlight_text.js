@@ -4,7 +4,7 @@ function highlightText(target){
     let regexPattern = new RegExp("\\b"+target+"\\b", 'gi');
 
     if(target.startsWith("-")){
-        regexPattern = new RegExp("\\w"+target.replace("-","")+"\\b", 'gi');
+        regexPattern = new RegExp("\\w+"+target.replace("-","")+"\\b", 'gi');
     }
 
     let text = worktext;
