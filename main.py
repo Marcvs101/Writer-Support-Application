@@ -83,6 +83,29 @@ def set_password():
     else:
         return flask.abort(401)
 
+@app.post("/signup")
+def create_new_user():
+    
+    # Grab login form
+    login_form = flask.request.form
+
+    username = login_form["username"]
+    password = login_form["password"]
+
+    print("ok 1")
+
+    # Try to create the user
+    result = User.create_user(username,password)
+
+    print("ok 2")
+
+    if result == True:
+        print("ok 3")
+        return flask.redirect(flask.url_for('get_root'))
+    else:
+        print("ok 4")
+        return flask.abort(401)
+
 
 @app.get("/users/<user_id>")
 def get_userpage(user_id):
@@ -98,6 +121,11 @@ def get_userpage(user_id):
         return flask.render_template("private_userpage.html.jinja",user_info=user_info)
     else:
         return flask.abort(401)
+
+
+@app.get("/signup")
+def get_newuserpage():
+    return flask.render_template("signup.html.jinja")
 
 
 

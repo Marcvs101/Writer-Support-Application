@@ -14,11 +14,14 @@
             </form>
         </div>
     {% else %}
+        <div>
+            Login o <a href="/signup">crea un account</a>
         <form id="loginForm" action="/login" method="post">
             <input name="username" type="text" placeholder ="Username" id=""/>
             <input name="password" type="password" placeholder ="Password" id=""/>
             <input type="submit" value="Login"/>
         </form>
+        </div>
     {% endif %}
     </div>
     <hr>

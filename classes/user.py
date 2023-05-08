@@ -129,7 +129,7 @@ class User(flask_login.UserMixin):
         new_user["active"] = True
         new_user["username"] = username
         new_user["hashed_password"] = hashlib.md5(password.encode("utf-8")).hexdigest()
-        new_userlist.append(user)
+        new_userlist.append(new_user)
 
         new_userlist.sort(key=lambda i: int(i["userid"]), reverse=False)
 
