@@ -4,7 +4,23 @@
     <title>Assistente alla scrittura</title>
 </head>
 <body>
+    <div style="display: flex; justify-content: space-around">
     <h1>Assistente alla scrittura</h1>
+    {% if logged_in %}
+        <div>
+            Bentornato/a, <a href="/users/{{ user_info.id }}">{{ user_info.name }}</a>!
+            <form id="logoutForm" action="/logout" method="post">
+                <input type="submit" value="Logout"/>
+            </form>
+        </div>
+    {% else %}
+        <form id="loginForm" action="/login" method="post">
+            <input name="username" type="text" placeholder ="Username" id=""/>
+            <input name="password" type="password" placeholder ="Password" id=""/>
+            <input type="submit" value="Login"/>
+        </form>
+    {% endif %}
+    </div>
     <hr>
 
     {# Area principale di input #}
@@ -12,15 +28,12 @@
         <form id="textForm" action="/analyzeText" method="post">
             <textarea id="textInput" name="textInput" rows="20" cols="100" form="textForm" placeholder="Inserisci il testo da analizzare qui..."></textarea>
             <br>
-            <input type="submit" value="Analizza" id=""/>
+            <input type="submit" value="Analizza"/>
         </form>
     </div>
 
     <hr>
-    {# Area principale di output #}
-    
-    {{ a_variable }}
-
+    {# Area secondaria #}
     
 </body>
 </html>
