@@ -4,15 +4,19 @@
     <title>Assistente alla scrittura</title>
 </head>
 <body>
-    <h1>Creazione Account</h1>
+    <div style="display: flex; justify-content: space-around">
+        <h1>Creazione Account</h1>
+    </div>
     <hr>
 
     {# Area principale di input #}
-    <form id="loginForm" action="/signup" method="post">
-        <input name="username" type="text" placeholder ="Username" id=""/>
-        <input name="password" type="password" placeholder ="Password" id=""/>
-        <input type="submit" value="Crea Account"/>
-    </form>
+    <div style="display: flex; justify-content: space-around">
+        <form id="loginForm" action="/signup" method="post">
+            <input name="username" type="text" placeholder ="Username" id=""/>
+            <input name="password" type="password" placeholder ="Password" id=""/>
+            <input type="submit" value="Crea Account"/>
+        </form>
+    </div>
 
     <hr>
     {# Area secondaria #}

@@ -92,18 +92,12 @@ def create_new_user():
     username = login_form["username"]
     password = login_form["password"]
 
-    print("ok 1")
-
     # Try to create the user
     result = User.create_user(username,password)
 
-    print("ok 2")
-
     if result == True:
-        print("ok 3")
         return flask.redirect(flask.url_for('get_root'))
     else:
-        print("ok 4")
         return flask.abort(401)
 
 
@@ -147,6 +141,7 @@ def get_root():
 
 # Analisi del testo
 @app.post("/analyzeText")
+@flask_login.login_required
 def post_analyze_text():
 
     text_input = flask.request.form["textInput"]
