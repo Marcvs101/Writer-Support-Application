@@ -64,7 +64,7 @@ def post_analyze_text():
     for word in text_statistics:
         if (text_statistics[word]>1):
             text_dictionary.append({"key":word, "count":str(text_statistics[word])})
-    text_dictionary.sort(key=lambda i: i["count"], reverse=True)
+    text_dictionary.sort(key=lambda i: int(i["count"]), reverse=True)
 
     f=open(file="logs/"+str(hashlib.md5(text_input.encode('utf-8')).hexdigest())+".txt",mode="w",encoding="utf-8")
     f.write(str(request.remote_addr))
