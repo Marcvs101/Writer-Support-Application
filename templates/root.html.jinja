@@ -2,57 +2,36 @@
 <html lang="it">
 <head>
     <title>Assistente alla scrittura</title>
+    <link rel="stylesheet" href="/static/css/common.css">
 </head>
 <body>
-    <table width="100%">
-        <tr>
-            <td width="30%" style="text-align: center;"></td>
-            <td width="40%" style="text-align: center;">
-                <h1>Assistente alla scrittura</h1>
-            </td>
-            <td width="30%" style="text-align: center;">
-                {% if logged_in %}
-                    <div>
-                        Bentornato/a, <a href="/users/{{ user_info.id }}">{{ user_info.name }}</a>!
-                        <form id="logoutForm" action="/logout" method="post">
-                            <input type="submit" value="Logout"/>
-                        </form>
-                    </div>
-                {% else %}
-                    <div>
-                        Login o <a href="/signup">crea un account</a>
-                        <form id="loginForm" action="/login" method="post">
-                            <input name="username" type="text" placeholder ="Username" id=""/>
-                            <input name="password" type="password" placeholder ="Password" id=""/>
-                            <input type="submit" value="Login"/>
-                        </form>
-                    </div>
-                {% endif %}
-            </td>
-        </tr>
-    </table>
-
-    <hr>
-
-    {# Area principale di input #}
+    <h1>Assistente alla scrittura</h1>
+    <br>
+    
     {% if logged_in %}
-        <div style="display: flex; justify-content: space-around">
-            <form id="textForm" action="/analyzeText" method="post">
-                <textarea id="textInput" name="textInput" rows="20" cols="100" form="textForm" placeholder="Inserisci il testo da analizzare qui..."></textarea>
-                <br>
-                <input type="submit" value="Analizza"/>
-            </form>
-        </div>
-    {% else %}
-        <div style="display: flex; justify-content: space-around">
-            Devi essere loggato/a per accedere all'assistente.
+        <form id="textForm" action="/analyzeText" method="post">
+            <textarea id="textInput" name="textInput" rows="20" cols="100" form="textForm" placeholder="Inserisci il testo da analizzare qui..."></textarea>
             <br>
-            Contatta gli amministratori per domande.
-        </div>
+            <input type="submit" value="Analizza"/>
+        </form>
+
+        <br>
+
+        <p>Bentornato/a, <a href="/users/{{ user_info.id }}">{{ user_info.name }}</a>!</p>
+        <form id="logoutForm" action="/logout" method="post" >
+            <input type="submit" value="Logout"/>
+        </form>
+    {% else %}
+        <p><a href="/signup">Crea un account</a> o effettua il log in per accedere all'assistente</p>
+        <form id="loginForm" action="/login" method="post" >
+            <input name="username" type="text" placeholder ="Username" id=""/>
+            <input name="password" type="password" placeholder ="Password" id=""/>
+            <input type="submit" value="Login"/>
+        </form>
+        <p>Contatta gli amministratori per domande.</p>
     {% endif %}
 
-    <hr>
-    {# Area secondaria #}
+    <br>
     
 </body>
 </html>
