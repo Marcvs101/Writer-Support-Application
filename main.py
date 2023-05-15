@@ -135,7 +135,10 @@ def get_root():
         logged_in = True
         user_info = flask_login.current_user
 
-    return flask.render_template("root.html.jinja",logged_in=logged_in,user_info=user_info)
+    if logged_in == False:
+        return flask.render_template("root.html.jinja",logged_in=logged_in,user_info=user_info)
+    else:
+        return flask.render_template("analyze_text_input.html.jinja",logged_in=logged_in,user_info=user_info)
     # Use jinja2 for template
 
 
@@ -179,4 +182,4 @@ def post_analyze_text():
     f.write(str(text_input.replace("\r","\n").replace("\n\n","\n")))
     f.close()
 
-    return flask.render_template("analyze_text.html.jinja", displayed_text=text_output, text_dictionary=text_dictionary)
+    return flask.render_template("analyze_text_output.html.jinja", displayed_text=text_output, text_dictionary=text_dictionary)

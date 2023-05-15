@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <title>Assistente alla scrittura</title>
+    <link rel="stylesheet" href="/static/css/common.css">
+</head>
+<body>
+    <table style="width:100%">
+        <tbody>
+            <tr>
+                <td style="width:20%;">
+                    <p>Bentornato/a <a href="/users/{{ user_info.id }}">{{ user_info.name }}</a>!</p>
+                </td>
+                <td>
+                    <h1>Assistente alla Scrittura</h1>
+                </td>
+                <td style="width:20%;">
+                    <form id="logoutForm" action="/logout" method="post" >
+                        <input type="submit" value="Logout"/>
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    
+    <form id="textForm" action="/analyzeText" method="post">
+        <textarea id="textInput" name="textInput" rows="20" form="textForm" placeholder="Inserisci il testo da analizzare qui..." spellcheck=true style="width:95%;"></textarea>
+        <br>
+        <input type="submit" value="Analizza"/>
+    </form>
+    
+</body>
+</html>
